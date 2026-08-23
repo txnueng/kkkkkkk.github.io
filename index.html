@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #d81b60; /* ชมพูกรมท่า / ชมพูเข้มแบบทางการ */
-            --secondary-color: #f8bbd0; /* ชมพูอ่อนพาสเทล */
-            --accent-color: #ad1457;
-            --bg-color: #fdf8f9;
-            --text-dark: #2c3e50;
+            --primary-color: #1a237e; /* น้ำเงินเข้มทางการแบบรัฐบาลไทย */
+            --secondary-color: #e8eaf6;
+            --accent-color: #0d47a1;
+            --bg-color: #f8f9fa;
+            --text-dark: #212529;
             --text-light: #ffffff;
-            --border-color: #e0e0e0;
+            --border-color: #dee2e6;
             --transition: all 0.3s ease;
         }
 
@@ -31,191 +31,268 @@
             line-height: 1.6;
         }
 
-        /* --- Top Bar (สไตล์เว็บทางการ) --- */
-        .top-bar {
-            background-color: #880e4f;
-            color: var(--text-light);
-            padding: 5px 5%;
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .top-bar-left, .top-bar-right {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .lang-switch-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 2px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 12px;
-            transition: var(--transition);
-        }
-
-        .lang-switch-btn:hover {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        /* --- Header & Main Navigation --- */
+        /* --- Header สไตล์เว็บรัฐบาลไทย --- * /
         header {
             background-color: var(--text-light);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
         }
 
         .header-container {
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 15px 20px;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo-area {
+        .header-left {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+        }
+
+        .menu-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
         }
 
-        .logo-icon {
-            font-size: 36px;
-            color: var(--primary-color);
+        .logo-brand img {
+            height: 40px;
+            width: auto;
         }
 
-        .logo-text h1 {
-            font-size: 20px;
+        .logo-brand .brand-text {
+            font-size: 18px;
+            font-weight: 600;
             color: var(--primary-color);
-            font-weight: 700;
             line-height: 1.2;
         }
 
-        .logo-text span {
-            font-size: 13px;
-            color: #666;
+        .logo-brand .brand-sub {
+            font-size: 11px;
+            color: #6c757d;
+            display: block;
+            font-weight: 400;
         }
 
-        /* Desktop Nav Menu */
-        .nav-menu {
+        /* Nav Links ตรงกลาง/ขวา */
+        .nav-links {
             display: flex;
             list-style: none;
-            gap: 10px;
+            gap: 25px;
             align-items: center;
         }
 
-        .nav-menu li a {
+        .nav-links li a {
             text-decoration: none;
             color: var(--text-dark);
             font-size: 15px;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 4px;
+            font-weight: 400;
             transition: var(--transition);
         }
 
-        .nav-menu li a:hover, .nav-menu li a.active {
-            background-color: var(--secondary-color);
-            color: var(--accent-color);
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--primary-color);
+            font-weight: 500;
         }
 
-        /* Mobile Hamburger Toggle */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
+        /* Header Right: Search & Actions */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            position: relative;
+            background: #f1f3f5;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            width: 200px;
+        }
+
+        .search-box input {
             border: none;
-            font-size: 24px;
-            color: var(--primary-color);
+            background: transparent;
+            outline: none;
+            font-size: 13px;
+            width: 100%;
+            padding-right: 5px;
+        }
+
+        .search-box i {
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+        .accessibility-btn {
+            background: #f1f3f5;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .accessibility-btn:hover {
+            background: #e2e6ea;
+        }
+
+        .lang-pill-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        /* --- Hero Slider Layout (ตามภาพต้นแบบ) --- */
+        .hero-slider-container {
+            max-width: 1300px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero-split-box {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            min-height: 420px;
+        }
+
+        .hero-img-side {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-img-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 420px;
+        }
+
+        .hero-content-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .hero-content-side img {
+            max-width: 80px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content-side h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-content-side h3 {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .hero-divider {
+            width: 120px;
+            height: 2px;
+            background-color: var(--primary-color);
+            margin-bottom: 0;
+        }
+
+        /* Slider Dots */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 4px;
+            background-color: #cbd5e1;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            width: 28px;
+            background-color: var(--primary-color);
         }
 
         /* --- Page Sections --- */
         .page-section {
             display: none;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 30px auto;
-            padding: 0 20px 50px;
-            min-height: 70vh;
-            animation: fadeIn 0.4s ease;
+            padding: 0 20px 60px;
+            min-height: 60vh;
+            animation: fadeIn 0.3s ease;
         }
 
         .page-section.active { display: block; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Gov Style Hero & Announcement Banner --- */
-        .gov-hero {
-            background: linear-gradient(rgba(136, 14, 79, 0.85), rgba(216, 27, 96, 0.85)), url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
-            color: white;
-            padding: 50px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .gov-hero h2 { font-size: 32px; margin-bottom: 10px; font-weight: 600; }
-        .gov-hero p { font-size: 16px; opacity: 0.9; max-width: 800px; }
-
-        /* Quick Access Links (ปุ่มบริการด่วนสไตล์เว็บราชการ) */
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .quick-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-color);
-            cursor: pointer;
-            text-decoration: none;
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        .quick-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(216, 27, 96, 0.15);
-        }
-
-        .quick-card i {
-            font-size: 32px;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .quick-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
-        .quick-card p { font-size: 13px; color: #666; }
-
-        /* Section Header Title (สไตล์หัวข้อเว็บทางการ) */
-        .section-header-gov {
+        .section-title-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 10px;
             margin-bottom: 25px;
         }
 
-        .section-header-gov h3 {
+        .section-title-bar h3 {
             font-size: 20px;
             color: var(--primary-color);
             font-weight: 600;
@@ -224,44 +301,35 @@
             gap: 10px;
         }
 
-        .section-header-gov a {
-            font-size: 14px;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .section-header-gov a:hover { text-decoration: underline; }
-
-        /* News Grid / Slider */
+        /* News Cards */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
-        .news-item-card {
+        .news-card {
             background: white;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
             transition: var(--transition);
         }
 
-        .news-item-card:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border-color: var(--secondary-color);
+        .news-card:hover {
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
         }
 
-        .news-item-card img { width: 100%; height: 160px; object-fit: cover; }
-        .news-content { padding: 15px; }
-        .news-content h4 { font-size: 16px; color: var(--text-dark); margin-bottom: 8px; font-weight: 600; }
-        .news-content p { font-size: 13px; color: #666; margin-bottom: 15px; }
+        .news-card img { width: 100%; height: 180px; object-fit: cover; }
+        .news-body { padding: 20px; }
+        .news-body h4 { font-size: 16px; color: var(--text-dark); margin-bottom: 10px; font-weight: 600; }
+        .news-body p { font-size: 13px; color: #6c757d; margin-bottom: 15px; }
 
-        /* --- Executive Board --- */
+        /* Board & Forms */
         .board-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
@@ -271,18 +339,16 @@
             text-align: center;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
 
-        .board-card img { width: 100%; height: 220px; object-fit: cover; }
+        .board-card img { width: 100%; height: 230px; object-fit: cover; }
         .board-info { padding: 15px; }
         .board-info h4 { color: var(--primary-color); font-size: 16px; margin-bottom: 4px; }
-        .board-info p { color: #666; font-size: 13px; }
+        .board-info p { color: #6c757d; font-size: 13px; }
 
-        /* --- Forms (Report & Admin) --- */
-        .gov-form-container {
+        .form-card {
             background: white;
-            padding: 30px;
+            padding: 35px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             max-width: 800px;
@@ -290,68 +356,67 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
-        .form-row { margin-bottom: 20px; }
-        .form-row label { display: block; font-weight: 500; margin-bottom: 8px; color: var(--text-dark); font-size: 14px; }
-        .form-row input, .form-row textarea {
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 500; margin-bottom: 8px; font-size: 14px; }
+        .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 14px;
             outline: none;
             transition: var(--transition);
         }
-        .form-row input:focus, .form-row textarea:focus {
+        .form-group input:focus, .form-group textarea:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(216, 27, 96, 0.1);
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
         }
 
-        .btn-gov {
+        .btn-submit {
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 25px;
+            padding: 12px 25px;
             font-size: 15px;
             font-weight: 500;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             transition: var(--transition);
         }
-        .btn-gov:hover { background-color: var(--accent-color); }
+        .btn-submit:hover { background-color: var(--accent-color); }
 
-        .admin-list-row {
+        .admin-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #fafafa;
+            background: #f8f9fa;
             padding: 12px 15px;
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 6px;
             margin-bottom: 10px;
         }
 
-        .btn-del-gov {
-            background-color: #d32f2f;
+        .btn-delete {
+            background-color: #dc3545;
             color: white;
             border: none;
-            padding: 5px 12px;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 13px;
         }
-        .btn-del-gov:hover { background-color: #b71c1c; }
 
-        /* --- Footer (สไตล์เว็บทางการ) --- */
+        /* --- Footer --- */
         footer {
-            background-color: #263238;
-            color: #cfd8dc;
+            background-color: #111827;
+            color: #9ca3af;
             padding: 40px 20px 20px;
-            margin-top: 50px;
+            margin-top: 60px;
             font-size: 14px;
         }
 
-        .footer-content {
-            max-width: 1200px;
+        .footer-wrap {
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -364,32 +429,33 @@
             font-size: 16px;
             margin-bottom: 15px;
             border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 5px;
+            padding-bottom: 6px;
             display: inline-block;
         }
 
         .footer-col p, .footer-col a {
-            color: #b0bec5;
+            color: #9ca3af;
             text-decoration: none;
             display: block;
             margin-bottom: 8px;
             font-size: 13px;
         }
-        .footer-col a:hover { color: white; text-decoration: underline; }
+        .footer-col a:hover { color: white; }
 
-        .footer-bottom {
-            max-width: 1200px;
+        .footer-sub {
+            max-width: 1300px;
             margin: 0 auto;
-            border-top: 1px solid #37474f;
+            border-top: 1px solid #1f2937;
             padding-top: 20px;
             text-align: center;
             font-size: 12px;
-            color: #90a4ae;
+            color: #6b7280;
         }
 
-        /* Responsive Sidebar for Mobile */
-        @media(max-width: 768px) {
-            .nav-menu {
+        /* Mobile Responsive */
+        @media(max-width: 900px) {
+            .hero-split-box { grid-template-columns: 1fr; }
+            .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
@@ -397,103 +463,98 @@
                 left: 0;
                 width: 100%;
                 background: white;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                padding: 15px 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                text-align: center;
             }
-            .nav-menu.active { display: flex; }
-            .mobile-menu-btn { display: block; }
+            .nav-links.active { display: flex; }
+            .search-box { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <span><i class="fa-solid fa-building-columns"></i> <span data-i18n="topBarOrg">องค์กรเยาวชนต้นแบบเพื่อความโปร่งใส</span></span>
-        </div>
-        <div class="top-bar-right">
-            <span><i class="fa-solid fa-globe"></i> Language:</span>
-            <button class="lang-switch-btn" id="langToggle" onclick="toggleLanguage()">EN</button>
-        </div>
-    </div>
-
-    <!-- Header & Main Navigation -->
+    <!-- Header สไตล์เว็บรัฐบาลไทย -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo-area" onclick="navigateTo('home')">
-                <i class="fa-solid fa-shield-halved logo-icon"></i>
-                <div class="logo-text">
-                    <h1>YouthShield</h1>
-                    <span data-i18n="logoSub">ระบบสารสนเทศเพื่อการต่อต้านการทุจริต</span>
-                </div>
-            </a>
-            
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <div class="header-left">
+                <button class="menu-toggle-btn" onclick="toggleMobileMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="#" class="logo-brand" onclick="navigateTo('home')">
+                    <i class="fa-solid fa-shield-halved" style="font-size: 32px; color: var(--primary-color);"></i>
+                    <div>
+                        <span class="brand-text">YouthShield</span>
+                        <span class="brand-sub" data-i18n="logoSub">องค์กรเยาวชนเพื่อความโปร่งใส</span>
+                    </div>
+                </a>
+            </div>
 
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#" class="active" onclick="navigateTo('home')" data-i18n="menuHome">หน้าหลัก</a></li>
-                <li><a href="#" onclick="navigateTo('board')" data-i18n="menuBoard">ทำเนียบผู้บริหาร</a></li>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#" class="active" onclick="navigateTo('home')" data-i18n="menuHome">หน้าแรก</a></li>
+                <li><a href="#" onclick="navigateTo('board')" data-i18n="menuBoard">เกี่ยวกับองค์กร</a></li>
                 <li><a href="#" onclick="navigateTo('news')" data-i18n="menuNews">ข่าวประชาสัมพันธ์</a></li>
                 <li><a href="#" onclick="navigateTo('report')" data-i18n="menuReport">แจ้งเบาะแส</a></li>
                 <li><a href="#" onclick="navigateTo('contact')" data-i18n="menuContact">ติดต่อเรา</a></li>
                 <li><a href="#" onclick="navigateTo('admin')" data-i18n="menuAdmin"><i class="fa-solid fa-gear"></i> จัดการระบบ</a></li>
             </ul>
+
+            <div class="header-right">
+                <div class="search-box">
+                    <input type="text" data-i18n-ph="searchPlaceholder" placeholder="ค้นหา...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <button class="accessibility-btn" title="Accessibility Options"><i class="fa-solid fa-universal-access"></i></button>
+                <button class="lang-pill-btn" id="langToggle" onclick="toggleLanguage()">
+                    <i class="fa-solid fa-globe"></i> <span id="langText">TH</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- 1. Home Section -->
+    <!-- 1. Home Section (Hero Split Layout ตามภาพ) -->
     <section id="home" class="page-section active">
-        <div class="gov-hero">
-            <h2 data-i18n="heroTitle">ยินดีต้อนรับสู่เครือข่าย YouthShield</h2>
-            <p data-i18n="heroDesc">ศูนย์กลางข้อมูลข่าวสาร การป้องกัน และเฝ้าระวังการทุจริตคอร์รัปชันในกลุ่มเยาวชน มุ่งสร้างสรรค์สังคมไทยให้โปร่งใสและเป็นธรรม</p>
-        </div>
-
-        <!-- Quick Access Services -->
-        <div class="quick-links">
-            <div class="quick-card" onclick="navigateTo('report')">
-                <i class="fa-solid fa-bullhorn"></i>
-                <h3 data-i18n="quickReportTitle">แจ้งเบาะแสคอร์รัปชัน</h3>
-                <p data-i18n="quickReportDesc">ส่งเรื่องร้องเรียน ปลอดภัย เป็นความลับ</p>
+        <div class="hero-slider-container">
+            <div class="hero-split-box">
+                <div class="hero-img-side">
+                    <img id="heroImage" src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Hero Banner">
+                </div>
+                <div class="hero-content-side">
+                    <i class="fa-solid fa-shield-halved" style="font-size: 54px; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h2 data-i18n="heroTitle">YouthShield</h2>
+                    <h3 data-i18n="heroSubTitle">YOUTH SHIELD NETWORK</h3>
+                    <div class="hero-divider"></div>
+                </div>
             </div>
-            <div class="quick-card" onclick="navigateTo('news')">
-                <i class="fa-solid fa-newspaper"></i>
-                <h3 data-i18n="quickNewsTitle">ข่าวสารล่าสุด</h3>
-                <p data-i18n="quickNewsDesc">ติดตามกิจกรรมและประกาศทางการ</p>
-            </div>
-            <div class="quick-card" onclick="navigateTo('board')">
-                <i class="fa-solid fa-users-rectangle"></i>
-                <h3 data-i18n="quickBoardTitle">โครงสร้างองค์กร</h3>
-                <p data-i18n="quickBoardDesc">ทำเนียบคณะผู้บริหารและคณะทำงาน</p>
-            </div>
-            <div class="quick-card" onclick="navigateTo('contact')">
-                <i class="fa-solid fa-headset"></i>
-                <h3 data-i18n="quickContactTitle">ช่องทางติดต่อ</h3>
-                <p data-i18n="quickContactDesc">สอบถามข้อมูลเพิ่มเติมหรือประสานงาน</p>
+            <!-- Slider Dots -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="setSlide(0)"></span>
+                <span class="dot" onclick="setSlide(1)"></span>
+                <span class="dot" onclick="setSlide(2)"></span>
             </div>
         </div>
 
-        <!-- Latest News Grid -->
-        <div class="section-header-gov">
-            <h3><i class="fa-solid fa-circle-exclamation"></i> <span data-i18n="sectionNewsHeader">ข่าวสารและกิจกรรมประชาสัมพันธ์</span></h3>
-            <a href="#" onclick="navigateTo('news')" data-i18n="viewAll">ดูทั้งหมด &gt;&gt;</a>
+        <!-- Latest News Preview -->
+        <div style="margin-top: 50px;">
+            <div class="section-title-bar">
+                <h3><i class="fa-solid fa-bullhorn"></i> <span data-i18n="sectionNews">ข่าวสารและกิจกรรมล่าสุด</span></h3>
+                <a href="#" onclick="navigateTo('news')" style="color: var(--primary-color); text-decoration: none; font-size: 14px;" data-i18n="viewAll">ดูทั้งหมด &gt;&gt;</a>
+            </div>
+            <div class="news-grid" id="homeNewsGrid"></div>
         </div>
-        <div class="news-grid" id="homeNewsGrid"></div>
     </section>
 
     <!-- 2. Board Section -->
     <section id="board" class="page-section">
-        <div class="section-header-gov">
-            <h3><i class="fa-solid fa-users"></i> <span data-i18n="boardTitle">ทำเนียบคณะผู้บริหารองค์กร</span></h3>
+        <div class="section-title-bar">
+            <h3><i class="fa-solid fa-users"></i> <span data-i18n="boardTitle">ทำเนียบผู้บริหารองค์กร</span></h3>
         </div>
         <div class="board-grid" id="boardGrid"></div>
     </section>
 
-    <!-- 3. All News Section -->
+    <!-- 3. News Section -->
     <section id="news" class="page-section">
-        <div class="section-header-gov">
+        <div class="section-title-bar">
             <h3><i class="fa-solid fa-newspaper"></i> <span data-i18n="newsTitlePage">ข่าวสารและประกาศทั้งหมด</span></h3>
         </div>
         <div class="news-grid" id="fullNewsGrid"></div>
@@ -501,40 +562,40 @@
 
     <!-- 4. Report Section -->
     <section id="report" class="page-section">
-        <div class="section-header-gov">
+        <div class="section-title-bar">
             <h3><i class="fa-solid fa-file-shield"></i> <span data-i18n="reportTitle">ระบบแจ้งเบาะแสการทุจริต</span></h3>
         </div>
-        <div class="gov-form-container">
-            <p style="color: #666; font-size: 14px; margin-bottom: 20px; text-align: center;" data-i18n="reportSubtitle">ข้อมูลของท่านจะได้รับการคุ้มครองและปกปิดเป็นความลับตามนโยบายความปลอดภัยสูงสุด</p>
+        <div class="form-card">
+            <p style="color: #6c757d; font-size: 14px; margin-bottom: 25px; text-align: center;" data-i18n="reportSubtitle">ข้อมูลของท่านจะได้รับการคุ้มครองและปกปิดเป็นความลับสูงสุด</p>
             <form onsubmit="submitReport(event)">
-                <div class="form-row">
+                <div class="form-group">
                     <label data-i18n="labelTopic">หัวข้อเรื่องที่แจ้งเบาะแส</label>
-                    <input type="text" data-i18n-ph="placeholderTopic" placeholder="ระบุหัวข้อเรื่อง..." required>
+                    <input type="text" data-i18n-ph="phTopic" placeholder="ระบุหัวข้อเรื่อง..." required>
                 </div>
-                <div class="form-row">
-                    <label data-i18n="labelDetail">รายละเอียดเหตุการณ์ / สถานที่</label>
-                    <textarea rows="5" data-i18n-ph="placeholderDetail" placeholder="ระบุรายละเอียดข้อเท็จจริงที่พบ..." required></textarea>
+                <div class="form-group">
+                    <label data-i18n="labelDetail">รายละเอียดเหตุการณ์</label>
+                    <textarea rows="5" data-i18n-ph="phDetail" placeholder="ระบุรายละเอียดข้อเท็จจริงที่พบ..." required></textarea>
                 </div>
-                <div class="form-row">
-                    <label data-i18n="labelLink">ลิงก์เอกสารหรือรูปภาพหลักฐานประกอบ (ถ้ามี)</label>
-                    <input type="text" data-i18n-ph="placeholderLink" placeholder="https://...">
+                <div class="form-group">
+                    <label data-i18n="labelLink">ลิงก์หลักฐานประกอบ (ถ้ามี)</label>
+                    <input type="text" data-i18n-ph="phLink" placeholder="https://...">
                 </div>
-                <button type="submit" class="btn-gov" data-i18n="btnReport">ยืนยันการส่งข้อมูล</button>
+                <button type="submit" class="btn-submit" data-i18n="btnReport">ยืนยันการส่งข้อมูล</button>
             </form>
         </div>
     </section>
 
     <!-- 5. Contact Section -->
     <section id="contact" class="page-section">
-        <div class="section-header-gov">
+        <div class="section-title-bar">
             <h3><i class="fa-solid fa-address-book"></i> <span data-i18n="contactTitle">ติดต่อหน่วยงาน YouthShield</span></h3>
         </div>
-        <div class="gov-form-container" style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+        <div class="form-card" style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
             <div style="flex: 1; min-width: 250px;">
                 <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Contact" style="width: 100%; border-radius: 6px;">
             </div>
             <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
-                <h4 style="color: var(--primary-color);" data-i18n="contactSubHeader">ช่องทางการติดต่ออย่างเป็นทางการ</h4>
+                <h4 style="color: var(--primary-color);" data-i18n="contactSub">ช่องทางการติดต่ออย่างเป็นทางการ</h4>
                 <p><i class="fa-brands fa-facebook" style="color:#1877F2;"></i> Facebook: YouthShield Thailand</p>
                 <p><i class="fa-brands fa-instagram" style="color:#dc2743;"></i> Instagram: @youthshield.th</p>
                 <p><i class="fa-solid fa-envelope" style="color:var(--primary-color);"></i> Email: contact@youthshield.or.th</p>
@@ -545,30 +606,30 @@
 
     <!-- 6. Admin Section -->
     <section id="admin" class="page-section">
-        <div class="section-header-gov">
+        <div class="section-title-bar">
             <h3><i class="fa-solid fa-gear"></i> <span data-i18n="adminTitle">ระบบบริหารจัดการข่าวสาร (Admin Portal)</span></h3>
         </div>
         
-        <div class="gov-form-container" style="margin-bottom: 30px;">
+        <div class="form-card" style="margin-bottom: 30px;">
             <h4 style="color: var(--primary-color); margin-bottom: 15px;" data-i18n="adminAddHeader">เพิ่มข่าวประชาสัมพันธ์ใหม่</h4>
             <form id="adminForm">
-                <div class="form-row">
-                    <label data-i18n="labelNewsTitle">หัวข้อข่าวประชาสัมพันธ์</label>
-                    <input type="text" id="newsTitle" data-i18n-ph="placeholderNewsTitle" placeholder="ระบุหัวข้อข่าว..." required>
+                <div class="form-group">
+                    <label data-i18n="labelNewsTitle">หัวข้อข่าว</label>
+                    <input type="text" id="newsTitle" data-i18n-ph="phNewsTitle" placeholder="ระบุหัวข้อข่าว..." required>
                 </div>
-                <div class="form-row">
+                <div class="form-group">
                     <label data-i18n="labelNewsImg">URL รูปภาพประกอบ</label>
-                    <input type="text" id="newsImage" data-i18n-ph="placeholderNewsImg" placeholder="https://example.com/image.jpg" required>
+                    <input type="text" id="newsImage" data-i18n-ph="phNewsImg" placeholder="https://..." required>
                 </div>
-                <div class="form-row">
+                <div class="form-group">
                     <label data-i18n="labelNewsDesc">เนื้อหาย่อ</label>
-                    <textarea id="newsDesc" rows="3" data-i18n-ph="placeholderNewsDesc" placeholder="สรุปเนื้อหาข่าวสั้นๆ..." required></textarea>
+                    <textarea id="newsDesc" rows="3" data-i18n-ph="phNewsDesc" placeholder="สรุปเนื้อหาข่าวสั้นๆ..." required></textarea>
                 </div>
-                <button type="submit" class="btn-gov" data-i18n="btnAdmin">บันทึกและเผยแพร่</button>
+                <button type="submit" class="btn-submit" data-i18n="btnAdmin">บันทึกและเผยแพร่</button>
             </form>
         </div>
 
-        <div class="gov-form-container">
+        <div class="form-card">
             <h4 style="color: var(--primary-color); margin-bottom: 15px;" data-i18n="adminManageHeader">รายการข่าวทั้งหมด (สำหรับลบข่าว)</h4>
             <div id="adminNewsList"></div>
         </div>
@@ -576,96 +637,107 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
+        <div class="footer-wrap">
             <div class="footer-col">
                 <h4 data-i18n="footerAbout">เกี่ยวกับ YouthShield</h4>
                 <p data-i18n="footerAboutText">องค์กรขับเคลื่อนสังคมใสสะอาด ป้องกันและปราบปรามการทุจริตผ่านเครือข่ายเยาวชนรุ่นใหม่</p>
             </div>
             <div class="footer-col">
                 <h4 data-i18n="footerLinks">ลิงก์ด่วน</h4>
-                <a href="#" onclick="navigateTo('home')" data-i18n="menuHome">หน้าหลัก</a>
+                <a href="#" onclick="navigateTo('home')" data-i18n="menuHome">หน้าแรก</a>
                 <a href="#" onclick="navigateTo('news')" data-i18n="menuNews">ข่าวประชาสัมพันธ์</a>
                 <a href="#" onclick="navigateTo('report')" data-i18n="menuReport">แจ้งเบาะแส</a>
             </div>
             <div class="footer-col">
                 <h4 data-i18n="footerContact">ติดต่อเรา</h4>
                 <p>E-mail: contact@youthshield.or.th</p>
-                <p>Call Center: 02-XXX-XXXX</p>
+                <p>Hotline: 02-XXX-XXXX</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p data-i18n="footerCopy">© 2026 YouthShield Organization. All Rights Reserved. (Government Portal Style Layout)</p>
+        <div class="footer-sub">
+            <p data-i18n="footerCopy">© 2026 YouthShield Organization. All Rights Reserved. (Government Portal Layout)</p>
         </div>
     </footer>
 
     <script>
-        // --- 1. ระบบ 2 ภาษา (i18n) ---
+        // --- 1. ระบบสไลด์แบนเนอร์ ---
+        const heroImages = [
+            "https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+        ];
+        let currentSlide = 0;
+
+        function setSlide(index) {
+            currentSlide = index;
+            document.getElementById('heroImage').src = heroImages[currentSlide];
+            const dots = document.querySelectorAll('.slider-dots .dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlide);
+            });
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % heroImages.length;
+            setSlide(currentSlide);
+        }, 4000);
+
+        // --- 2. ระบบสองภาษา (i18n) ---
         let currentLang = 'th';
-        
         const i18n = {
             th: {
-                topBarOrg: "องค์กรเยาวชนต้นแบบเพื่อความโปร่งใส",
-                logoSub: "ระบบสารสนเทศเพื่อการต่อต้านการทุจริต",
-                menuHome: "หน้าหลัก", menuBoard: "ทำเนียบผู้บริหาร", menuNews: "ข่าวประชาสัมพันธ์",
+                logoSub: "องค์กรเยาวชนเพื่อความโปร่งใส",
+                menuHome: "หน้าแรก", menuBoard: "เกี่ยวกับองค์กร", menuNews: "ข่าวประชาสัมพันธ์",
                 menuReport: "แจ้งเบาะแส", menuContact: "ติดต่อเรา", menuAdmin: "จัดการระบบ",
-                heroTitle: "ยินดีต้อนรับสู่เครือข่าย YouthShield",
-                heroDesc: "ศูนย์กลางข้อมูลข่าวสาร การป้องกัน และเฝ้าระวังการทุจริตคอร์รัปชันในกลุ่มเยาวชน มุ่งสร้างสรรค์สังคมไทยให้โปร่งใสและเป็นธรรม",
-                quickReportTitle: "แจ้งเบาะแสคอร์รัปชัน", quickReportDesc: "ส่งเรื่องร้องเรียน ปลอดภัย เป็นความลับ",
-                quickNewsTitle: "ข่าวสารล่าสุด", quickNewsDesc: "ติดตามกิจกรรมและประกาศทางการ",
-                quickBoardTitle: "โครงสร้างองค์กร", quickBoardDesc: "ทำเนียบคณะผู้บริหารและคณะทำงาน",
-                quickContactTitle: "ช่องทางติดต่อ", quickContactDesc: "สอบถามข้อมูลเพิ่มเติมหรือประสานงาน",
-                sectionNewsHeader: "ข่าวสารและกิจกรรมประชาสัมพันธ์", viewAll: "ดูทั้งหมด >>",
-                boardTitle: "ทำเนียบคณะผู้บริหารองค์กร", newsTitlePage: "ข่าวสารและประกาศทั้งหมด",
-                reportTitle: "ระบบแจ้งเบาะแสการทุจริต", reportSubtitle: "ข้อมูลของท่านจะได้รับการคุ้มครองและปกปิดเป็นความลับตามนโยบายความปลอดภัยสูงสุด",
-                labelTopic: "หัวข้อเรื่องที่แจ้งเบาะแส", placeholderTopic: "ระบุหัวข้อเรื่อง...",
-                labelDetail: "รายละเอียดเหตุการณ์ / สถานที่", placeholderDetail: "ระบุรายละเอียดข้อเท็จจริงที่พบ...",
-                labelLink: "ลิงก์เอกสารหรือรูปภาพหลักฐานประกอบ (ถ้ามี)", placeholderLink: "https://...", btnReport: "ยืนยันการส่งข้อมูล",
-                contactTitle: "ติดต่อหน่วยงาน YouthShield", contactSubHeader: "ช่องทางการติดต่ออย่างเป็นทางการ",
+                searchPlaceholder: "ค้นหา...",
+                heroTitle: "YouthShield", heroSubTitle: "YOUTH SHIELD NETWORK",
+                sectionNews: "ข่าวสารและกิจกรรมล่าสุด", viewAll: "ดูทั้งหมด >>",
+                boardTitle: "ทำเนียบผู้บริหารองค์กร", newsTitlePage: "ข่าวสารและประกาศทั้งหมด",
+                reportTitle: "ระบบแจ้งเบาะแสการทุจริต", reportSubtitle: "ข้อมูลของท่านจะได้รับการคุ้มครองและปกปิดเป็นความลับสูงสุด",
+                labelTopic: "หัวข้อเรื่องที่แจ้งเบาะแส", phTopic: "ระบุหัวข้อเรื่อง...",
+                labelDetail: "รายละเอียดเหตุการณ์", phDetail: "ระบุรายละเอียดข้อเท็จจริงที่พบ...",
+                labelLink: "ลิงก์หลักฐานประกอบ (ถ้ามี)", phLink: "https://...", btnReport: "ยืนยันการส่งข้อมูล",
+                contactTitle: "ติดต่อหน่วยงาน YouthShield", contactSub: "ช่องทางการติดต่ออย่างเป็นทางการ",
                 adminTitle: "ระบบบริหารจัดการข่าวสาร (Admin Portal)", adminAddHeader: "เพิ่มข่าวประชาสัมพันธ์ใหม่",
-                labelNewsTitle: "หัวข้อข่าวประชาสัมพันธ์", placeholderNewsTitle: "ระบุหัวข้อข่าว...",
-                labelNewsImg: "URL รูปภาพประกอบ", placeholderNewsImg: "https://example.com/image.jpg",
-                labelNewsDesc: "เนื้อหาย่อ", placeholderNewsDesc: "สรุปเนื้อหาข่าวสั้นๆ...", btnAdmin: "บันทึกและเผยแพร่",
+                labelNewsTitle: "หัวข้อข่าว", phNewsTitle: "ระบุหัวข้อข่าว...",
+                labelNewsImg: "URL รูปภาพประกอบ", phNewsImg: "https://...",
+                labelNewsDesc: "เนื้อหาย่อ", phNewsDesc: "สรุปเนื้อหาข่าวสั้นๆ...", btnAdmin: "บันทึกและเผยแพร่",
                 adminManageHeader: "รายการข่าวทั้งหมด (สำหรับลบข่าว)", btnDelete: "ลบ",
                 footerAbout: "เกี่ยวกับ YouthShield", footerAboutText: "องค์กรขับเคลื่อนสังคมใสสะอาด ป้องกันและปราบปรามการทุจริตผ่านเครือข่ายเยาวชนรุ่นใหม่",
                 footerLinks: "ลิงก์ด่วน", footerContact: "ติดต่อเรา", footerCopy: "© 2026 YouthShield Organization. All Rights Reserved.",
-                alertReportText: "ส่งข้อมูลแจ้งเบาะแสเรียบร้อยแล้ว ขอบคุณที่ร่วมสร้างสังคมโปร่งใส",
-                alertAdminText: "บันทึกและเผยแพร่ข่าวประชาสัมพันธ์สำเร็จ",
-                confirmDelete: "คุณแน่ใจหรือไม่ว่าต้องการลบข่าวนี้ออกจากระบบ?"
+                alertReport: "ส่งข้อมูลแจ้งเบาะแสเรียบร้อยแล้ว ขอบคุณที่ร่วมสร้างสังคมโปร่งใส",
+                alertAdmin: "บันทึกและเผยแพร่ข่าวประชาสัมพันธ์สำเร็จ",
+                confirmDel: "คุณแน่ใจหรือไม่ว่าต้องการลบข่าวนี้ออกจากระบบ?"
             },
             en: {
-                topBarOrg: "Youth Model Organization for Transparency",
-                logoSub: "Anti-Corruption Information System",
-                menuHome: "Home", menuBoard: "Executive Board", menuNews: "News & PR",
+                logoSub: "Youth Organization for Transparency",
+                menuHome: "Home", menuBoard: "About Us", menuNews: "News & PR",
                 menuReport: "Report", menuContact: "Contact Us", menuAdmin: "Admin",
-                heroTitle: "Welcome to YouthShield Network",
-                heroDesc: "The center of information, prevention, and monitoring of corruption among youth, aiming to build a transparent and fair society.",
-                quickReportTitle: "Report Corruption", quickReportDesc: "Submit a secure and confidential complaint",
-                quickNewsTitle: "Latest News", quickNewsDesc: "Follow official activities and announcements",
-                quickBoardTitle: "Organization", quickBoardDesc: "Executive board and committee members",
-                quickContactTitle: "Contact Channels", quickContactDesc: "Inquire for more information or coordination",
-                sectionNewsHeader: "News & Public Relations", viewAll: "View All >>",
+                searchPlaceholder: "Search...",
+                heroTitle: "YouthShield", heroSubTitle: "YOUTH SHIELD NETWORK",
+                sectionNews: "Latest News & Activities", viewAll: "View All >>",
                 boardTitle: "Executive Board", newsTitlePage: "All News & Announcements",
                 reportTitle: "Corruption Reporting System", reportSubtitle: "Your information will be protected and kept strictly confidential.",
-                labelTopic: "Report Topic", placeholderTopic: "Specify topic...",
-                labelDetail: "Incident Details / Location", placeholderDetail: "Describe details...",
-                labelLink: "Evidence Link (Optional)", placeholderLink: "https://...", btnReport: "Submit Report",
-                contactTitle: "Contact YouthShield", contactSubHeader: "Official Contact Channels",
+                labelTopic: "Report Topic", phTopic: "Specify topic...",
+                labelDetail: "Incident Details", phDetail: "Describe details...",
+                labelLink: "Evidence Link (Optional)", phLink: "https://...", btnReport: "Submit Report",
+                contactTitle: "Contact YouthShield", contactSub: "Official Contact Channels",
                 adminTitle: "News Management Portal (Admin)", adminAddHeader: "Add New News Article",
-                labelNewsTitle: "News Title", placeholderNewsTitle: "Enter news title...",
-                labelNewsImg: "Image URL", placeholderNewsImg: "https://example.com/image.jpg",
-                labelNewsDesc: "Short Description", placeholderNewsDesc: "Brief summary...", btnAdmin: "Save & Publish",
+                labelNewsTitle: "News Title", phNewsTitle: "Enter news title...",
+                labelNewsImg: "Image URL", phNewsImg: "https://...",
+                labelNewsDesc: "Short Description", phNewsDesc: "Brief summary...", btnAdmin: "Save & Publish",
                 adminManageHeader: "All News List (Delete Options)", btnDelete: "Delete",
                 footerAbout: "About YouthShield", footerAboutText: "Organization driving a clean society, preventing and suppressing corruption through youth networks.",
                 footerLinks: "Quick Links", footerContact: "Contact Us", footerCopy: "© 2026 YouthShield Organization. All Rights Reserved.",
-                alertReportText: "Report submitted successfully. Thank you for your cooperation.",
-                alertAdminText: "News published successfully.",
-                confirmDelete: "Are you sure you want to delete this news?"
+                alertReport: "Report submitted successfully. Thank you for your cooperation.",
+                alertAdmin: "News published successfully.",
+                confirmDel: "Are you sure you want to delete this news?"
             }
         };
 
         function toggleLanguage() {
             currentLang = currentLang === 'th' ? 'en' : 'th';
-            document.getElementById('langToggle').innerText = currentLang === 'th' ? 'EN' : 'TH';
+            document.getElementById('langText').innerText = currentLang === 'th' ? 'TH' : 'EN';
             
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -681,7 +753,7 @@
             loadNews();
         }
 
-        // --- 2. ข้อมูลผู้บริหาร (รองรับ 2 ภาษา) ---
+        // --- 3. ข้อมูลผู้บริหาร ---
         const boardMembers = [
             { name_th: "นายสมชาย ใจยุติธรรม", name_en: "Somchai Jaiyutitham", role_th: "ประธานองค์กร", role_en: "President", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
             { name_th: "นางสาวศิริพร ซื่อตรง", name_en: "Siriporn Suetrong", role_th: "รองประธานฝ่ายปฏิบัติการ", role_en: "VP of Operations", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
@@ -692,12 +764,12 @@
         function renderBoard() {
             const boardGrid = document.getElementById('boardGrid');
             boardGrid.innerHTML = '';
-            boardMembers.forEach(member => {
-                const name = currentLang === 'th' ? member.name_th : member.name_en;
-                const role = currentLang === 'th' ? member.role_th : member.role_en;
+            boardMembers.forEach(m => {
+                const name = currentLang === 'th' ? m.name_th : m.name_en;
+                const role = currentLang === 'th' ? m.role_th : m.role_en;
                 boardGrid.innerHTML += `
                     <div class="board-card">
-                        <img src="${member.img}" alt="${name}">
+                        <img src="${m.img}" alt="${name}">
                         <div class="board-info">
                             <h4>${name}</h4>
                             <p>${role}</p>
@@ -707,35 +779,32 @@
             });
         }
 
-        // --- 3. ระบบนำทาง & Mobile Menu ---
+        // --- 4. เมนูนำทาง & LocalStorage ข่าวสาร ---
         function toggleMobileMenu() {
             document.getElementById('navMenu').classList.toggle('active');
         }
 
         function navigateTo(pageId) {
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             
             document.getElementById(pageId).classList.add('active');
-            
-            // Highlight active menu
             event && event.target && event.target.tagName === 'A' && event.target.classList.add('active');
             
             document.getElementById('navMenu').classList.remove('active');
             window.scrollTo(0, 0);
         }
 
-        // --- 4. ระบบข่าวสารและจัดการแอดมิน (LocalStorage) ---
         const defaultNews = [
             { title: "เปิดตัวโครงการ YouthShield อย่างเป็นทางการ ประจำปี 2026", image: "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "ร่วมขับเคลื่อนสังคมไทยให้โปร่งใส ตรวจสอบได้ พร้อมเปิดรับอาสาสมัครรุ่นใหม่..." },
             { title: "กิจกรรมอบรมเยาวชนต้านคอร์รัปชันเชิงปฏิบัติการ รุ่นที่ 1", image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "เสริมสร้างภูมิคุ้มกันและปลูกฝังจิตสำนึกสุจริตแก่เยาวชนระดับมัธยมศึกษา..." }
         ];
 
         function loadNews() {
-            let newsArray = JSON.parse(localStorage.getItem('youthShieldGovNews'));
+            let newsArray = JSON.parse(localStorage.getItem('youthShieldPortalNews'));
             if (!newsArray) {
                 newsArray = [...defaultNews];
-                localStorage.setItem('youthShieldGovNews', JSON.stringify(newsArray));
+                localStorage.setItem('youthShieldPortalNews', JSON.stringify(newsArray));
             }
 
             const homeGrid = document.getElementById('homeNewsGrid');
@@ -746,29 +815,24 @@
             fullGrid.innerHTML = '';
             adminList.innerHTML = '';
 
-            // แสดงเฉพาะ 3 ข่าวล่าสุดในหน้า Home, ทั้งหมดในหน้า News
             for (let i = newsArray.length - 1; i >= 0; i--) {
-                const news = newsArray[i];
+                const item = newsArray[i];
                 const cardHTML = `
-                    <div class="news-item-card">
-                        <img src="${news.image}" alt="${news.title}">
-                        <div class="news-content">
-                            <h4>${news.title}</h4>
-                            <p>${news.desc}</p>
+                    <div class="news-card">
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="news-body">
+                            <h4>${item.title}</h4>
+                            <p>${item.desc}</p>
                         </div>
                     </div>`;
                 
-                if (homeGrid.children.length < 3) {
-                    homeGrid.innerHTML += cardHTML;
-                }
+                if (homeGrid.children.length < 3) homeGrid.innerHTML += cardHTML;
                 fullGrid.innerHTML += cardHTML;
 
-                // Admin list row
-                const deleteBtnText = i18n[currentLang].btnDelete;
                 adminList.innerHTML += `
-                    <div class="admin-list-row">
-                        <span style="font-weight: 500; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70%;">${news.title}</span>
-                        <button class="btn-del-gov" onclick="deleteNews(${i})"><i class="fa-solid fa-trash"></i> ${deleteBtnText}</button>
+                    <div class="admin-row">
+                        <span style="font-weight: 500; font-size: 14px; max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.title}</span>
+                        <button class="btn-delete" onclick="deleteNews(${i})"><i class="fa-solid fa-trash"></i> ${i18n[currentLang].btnDelete}</button>
                     </div>`;
             }
 
@@ -777,11 +841,11 @@
             }
         }
 
-        function deleteNews(index) {
-            if (confirm(i18n[currentLang].confirmDelete)) {
-                let newsArray = JSON.parse(localStorage.getItem('youthShieldGovNews')) || [];
-                newsArray.splice(index, 1);
-                localStorage.setItem('youthShieldGovNews', JSON.stringify(newsArray));
+        function deleteNews(idx) {
+            if (confirm(i18n[currentLang].confirmDel)) {
+                let newsArray = JSON.parse(localStorage.getItem('youthShieldPortalNews')) || [];
+                newsArray.splice(idx, 1);
+                localStorage.setItem('youthShieldPortalNews', JSON.stringify(newsArray));
                 loadNews();
             }
         }
@@ -792,22 +856,21 @@
             const image = document.getElementById('newsImage').value;
             const desc = document.getElementById('newsDesc').value;
 
-            let newsArray = JSON.parse(localStorage.getItem('youthShieldGovNews')) || [];
+            let newsArray = JSON.parse(localStorage.getItem('youthShieldPortalNews')) || [];
             newsArray.push({ title, image, desc });
-            localStorage.setItem('youthShieldGovNews', JSON.stringify(newsArray));
+            localStorage.setItem('youthShieldPortalNews', JSON.stringify(newsArray));
 
             this.reset();
-            alert(i18n[currentLang].alertAdminText);
+            alert(i18n[currentLang].alertAdmin);
             loadNews();
         });
 
         function submitReport(e) {
             e.preventDefault();
-            alert(i18n[currentLang].alertReportText);
+            alert(i18n[currentLang].alertReport);
             e.target.reset();
         }
 
-        // Initialize 
         window.onload = () => {
             loadNews();
             renderBoard();
