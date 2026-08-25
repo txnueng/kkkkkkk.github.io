@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youthshield | องค์กรป้องกันทุจริต</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Header & Navigation -->
     <header>
         <div class="logo" onclick="switchPage('home')">
-            <img src="https://placehold.co/50x50/ffd700/0b2447?text=YS" alt="Youthshield Logo">
+            <div class="logo-circle">YS</div>
             <span>Youthshield</span>
         </div>
         <div class="header-controls">
@@ -45,28 +45,38 @@
         <!-- หน้าหลัก -->
         <section id="home" class="page active">
             <div class="hero">
-                <div class="hero-image">
-                    <img src="https://placehold.co/600x400/0b2447/ffd700?text=Organization+Building" alt="Building">
-                </div>
-                <div class="hero-text">
-                    <img src="https://placehold.co/100x100/ffd700/0b2447?text=YS" alt="Logo">
+                <div class="hero-content">
                     <h1>Youthshield</h1>
                     <h2>เครือข่ายเยาวชนป้องกันทุจริต</h2>
-                    <p>องค์กรของเรามุ่งเน้นการสร้างเครือข่ายเยาวชนที่เข้มแข็ง เพื่อเป็นหูเป็นตาและป้องกันการทุจริตในทุกระดับชั้น</p>
+                    <p>องค์กรของเรามุ่งเน้นการสร้างเครือข่ายเยาวชนที่เข้มแข็ง เพื่อเป็นหูเป็นตาและป้องกันการทุจริตในทุกระดับชั้น เพื่อสังคมที่โปร่งใส</p>
+                    <button class="btn-primary" onclick="switchPage('report')">แจ้งเบาะแสทันที</button>
                 </div>
             </div>
 
             <div class="news-section">
-                <h3 class="section-title"><span>ข่าวสารล่าสุด</span></h3>
-                <div class="news-slider" id="homeNewsSlider">
-                    <!-- ข่าวจะถูกดึงมาแสดงที่นี่ผ่าน JS -->
+                <div class="section-header">
+                    <h3 class="section-title">ข่าวสารล่าสุด</h3>
+                    <a href="#" class="view-all" onclick="switchPage('news-page')">ดูทั้งหมด ➔</a>
                 </div>
+                <div class="news-slider" id="homeNewsSlider">
+                    <!-- ข่าวจะถูกดึงมาแสดงที่นี่ -->
+                </div>
+            </div>
+        </section>
+
+        <!-- หน้าอ่านรายละเอียดข่าว (ใหม่) -->
+        <section id="news-detail" class="page">
+            <button class="btn-back" onclick="switchPage('home')">⬅ กลับหน้าหลัก</button>
+            <div class="detail-container">
+                <img id="detailImg" src="" alt="News Image">
+                <h2 id="detailTitle"></h2>
+                <p id="detailContent"></p>
             </div>
         </section>
 
         <!-- หน้าทำเนียบผู้บริหาร -->
         <section id="executives" class="page">
-            <h3 class="section-title"><span>ทำเนียบคณะผู้บริหาร</span></h3>
+            <h3 class="section-title center">ทำเนียบคณะผู้บริหาร</h3>
             <div class="exec-grid" id="execGrid">
                 <!-- ผู้บริหาร 10 คน -->
             </div>
@@ -74,24 +84,24 @@
 
         <!-- หน้าจดหมายข่าว (ดูทั้งหมด) -->
         <section id="news-page" class="page">
-            <h3 class="section-title"><span>จดหมายข่าวทั้งหมด</span></h3>
+            <h3 class="section-title center">จดหมายข่าวทั้งหมด</h3>
             <div class="news-grid" id="allNewsGrid"></div>
         </section>
 
         <!-- หน้าแจ้งเบาะแส -->
         <section id="report" class="page">
-            <h3 class="section-title"><span>แจ้งเบาะแสการทุจริต</span></h3>
-            <div class="form-container">
-                <input type="text" placeholder="หัวข้อการแจ้งเบาะแส">
-                <textarea rows="5" placeholder="รายละเอียด..."></textarea>
+            <h3 class="section-title center">แจ้งเบาะแสการทุจริต</h3>
+            <div class="modern-card form-container">
+                <input type="text" placeholder="หัวข้อการแจ้งเบาะแส (ไม่จำเป็นต้องระบุตัวตน)">
+                <textarea rows="6" placeholder="รายละเอียดเหตุการณ์ที่พบเจอ..."></textarea>
                 <input type="file" accept="image/*">
-                <button class="btn-gold">ส่งข้อมูล</button>
+                <button class="btn-primary">ส่งข้อมูลแจ้งเบาะแส</button>
             </div>
         </section>
 
         <!-- หน้าช่องทางการติดต่อ -->
         <section id="contact" class="page">
-            <h3 class="section-title"><span>ช่องทางการติดต่อ</span></h3>
+            <h3 class="section-title center">ช่องทางการติดต่อ</h3>
             <div class="social-links">
                 <a href="https://facebook.com" target="_blank" class="social-btn fb">Facebook</a>
                 <a href="https://instagram.com" target="_blank" class="social-btn ig">Instagram</a>
@@ -99,13 +109,23 @@
             </div>
         </section>
 
-        <!-- หน้า Admin สำหรับเพิ่มข่าว -->
+        <!-- หน้า Admin -->
         <section id="admin" class="page">
-            <h3 class="section-title"><span>เพิ่มจดหมายข่าว (Admin)</span></h3>
-            <div class="form-container">
+            <h3 class="section-title center">ระบบจัดการแอดมิน</h3>
+            
+            <div class="modern-card form-container mb-4">
+                <h4>เพิ่มข่าวสารใหม่</h4>
                 <input type="text" id="adminNewsTitle" placeholder="หัวข้อข่าว">
-                <input type="text" id="adminNewsImg" placeholder="URL รูปภาพ (หรือใช้ลิงก์รูปตัวอย่าง)">
-                <button class="btn-gold" onclick="addNews()">เผยแพร่ข่าวสาร</button>
+                <textarea id="adminNewsContent" rows="4" placeholder="เนื้อหาข่าวแบบละเอียด..."></textarea>
+                <input type="text" id="adminNewsImg" placeholder="URL รูปภาพ (เว้นว่างไว้เพื่อใช้รูปอัตโนมัติ)">
+                <button class="btn-primary" onclick="addNews()">เผยแพร่ข่าวสาร</button>
+            </div>
+
+            <div class="modern-card form-container">
+                <h4>จัดการข่าวสาร (ลบข่าว)</h4>
+                <div class="admin-news-list" id="adminNewsList">
+                    <!-- รายการข่าวสำหรับลบจะแสดงที่นี่ -->
+                </div>
             </div>
         </section>
     </main>
